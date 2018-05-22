@@ -112,6 +112,7 @@ class XMLHandler() extends DefaultHandler
     producer.produceData(record)
   }
 
+
   def replaceChars(data:String): String ={
 
     var d = data.replace("{","")

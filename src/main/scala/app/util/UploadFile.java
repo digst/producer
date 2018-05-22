@@ -1,6 +1,5 @@
 package app.util;
-
-import app.parser.XMLHandler;
+import app.parser.*;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -31,7 +30,7 @@ public class UploadFile extends HttpServlet {
     private String pathToData = null;
     private SAXParserFactory parserFactory = null;
     private SAXParser parser = null;
-    private XMLHandler xmlHandler = null;
+    private XMLHandlerString xmlHandler = null;
 
 
     org.slf4j.Logger LOG  = org.slf4j.LoggerFactory.getLogger(UploadFile.class);
@@ -47,7 +46,7 @@ public class UploadFile extends HttpServlet {
         this.parserFactory = SAXParserFactory.newInstance();
         parserFactory.setValidating(true);
         this.parser = parserFactory.newSAXParser();
-        xmlHandler = new XMLHandler();
+        xmlHandler = new XMLHandlerString();
         xmlHandler.setup(propertiesProducerConfig, propertiesTopicConfig);
 
     }

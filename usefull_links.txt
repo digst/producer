@@ -1,2 +1,5 @@
 http://repository.mapr.com/nexus/content/groups/mapr-public/org/
 https://dzone.com/articles/scala-in-java-maven-project
+
+#install mapr client
+http://package.mapr.com/releases/v6.0.0/ubuntu/

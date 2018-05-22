@@ -2,8 +2,6 @@ package app.kafka
 
 import java.util.Properties
 
-import app.parser.XMLHandler
-import com.govcloud.digst.Organisation
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
 class ProduceData[DataObject](propertiesConfigProducer:Properties,propertiesConfigTopics:Properties)
