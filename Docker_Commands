@@ -82,7 +82,7 @@ datascience@datascience-ThinkPad-P51:~$ history | grep docker
  1121  docker run --restart always --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
  1122  docker stop artifactory && docker rm -v artifactory
  1123  history | grep docker
- 1126  docker run --name artifactory --restart always -p 8081:8081 -v $ARTIFACTORY_HOME/data -v $ARTIFACTORY_HOME/LOGS -v $ARTIFACTORY_HOME/backup -v $ARTIFACTORY_HOME/etc docker.bintray.io/jfrog/artifactory-oss
+ 1126  docker run --name artifactory --restart always -p 38081:8081 -v $ARTIFACTORY_HOME/data -v $ARTIFACTORY_HOME/LOGS -v $ARTIFACTORY_HOME/backup -v $ARTIFACTORY_HOME/etc docker.bintray.io/jfrog/artifactory-oss
  1127  docker start artifactory
  1128  docker container inspect artifactory
  1129  docker container list
@@ -600,4 +600,6 @@ datascience@datascience-ThinkPad-P51:~$ history | grep docker
  docker build --tag mapr-test-sit:first .
  docker run -it --name producer --net=host -i -t mapr-test-sit:first
 
-docker run -d --net=host --name=schema-registry -e SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=localhost:2181 -e SCHEMA_REGISTRY_HOST_NAME=localhost -e SCHEMA_REGISTRY_LISTENERS=http://localhost:38081 confluentinc/cp-schema-registry:4.1.0
+docker run -d --net=host --name=schema-registry-home -e SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=maprdemo.mapr.io:5181 -e SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=maprdemo.mapr.io:9092 -e SCHEMA_REGISTRY_HOST_NAME=localhost -e SCHEMA_REGISTRY_LISTENERS=http://localhost:38081 confluentinc/cp-schema-registry:4.1.0
+
+https://github.com/confluentinc/schema-registry

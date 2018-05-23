@@ -4,7 +4,10 @@ import java.util
 import java.util.Properties
 
 import app.kafka.ProduceData
+import avro.AvroSerializer
+import com.govcloud.digst
 import com.govcloud.digst.Organisation
+import javax.naming.Binding
 import org.apache.log4j.Logger
 import org.xml.sax.Attributes
 import org.xml.sax.helpers.DefaultHandler
@@ -31,11 +34,13 @@ class XMLHandler() extends DefaultHandler
   var avroOrg:Organisation = _
   var extras:util.Map[CharSequence,CharSequence] = new util.HashMap[CharSequence, CharSequence]()
 
-  var producer:ProduceData[Organisation] = _
+  var producer:ProduceData[Array[Byte]] = _
 
   def setup(propertiesConfigProducer:Properties,propertiesConfigTopics:Properties): Unit =
   {
-    producer = new ProduceData[Organisation](propertiesConfigProducer, propertiesConfigTopics)
+    producer = new ProduceData[Array[Byte]](propertiesConfigProducer, propertiesConfigTopics)
+    AvroSerializer.instance().setUp(Organisation.SCHEMA$)
+
   }
 
   override def startElement(s: String, s1: String, qName: String, attributes: Attributes): Unit =
@@ -104,14 +109,19 @@ class XMLHandler() extends DefaultHandler
 
       }
 
-
   }
 
   def produceData(record:Organisation): Unit =
   {
-    producer.produceData(record)
+    producer.produceData(serializeAvro(record))
   }
 
+  def serializeAvro(record:Organisation): Array[Byte] = {
+
+    val bytes:Array[Byte] = AvroSerializer.instance().serialize(record)
+    bytes
+
+  }
 
   def replaceChars(data:String): String ={
 

@@ -22,6 +22,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+
+
 @WebServlet("/app/UploadDownloadFileServlet")
 public class UploadFile extends HttpServlet {
 
@@ -30,7 +32,7 @@ public class UploadFile extends HttpServlet {
     private String pathToData = null;
     private SAXParserFactory parserFactory = null;
     private SAXParser parser = null;
-    private XMLHandlerString xmlHandler = null;
+    private XMLHandler xmlHandler = null;
 
 
     org.slf4j.Logger LOG  = org.slf4j.LoggerFactory.getLogger(UploadFile.class);
@@ -46,7 +48,7 @@ public class UploadFile extends HttpServlet {
         this.parserFactory = SAXParserFactory.newInstance();
         parserFactory.setValidating(true);
         this.parser = parserFactory.newSAXParser();
-        xmlHandler = new XMLHandlerString();
+        xmlHandler = new XMLHandler();
         xmlHandler.setup(propertiesProducerConfig, propertiesTopicConfig);
 
     }
@@ -115,10 +117,6 @@ public class UploadFile extends HttpServlet {
         File f = filePath.listFiles()[0];
         parser.parse(f, xmlHandler);
     }
-
-
-
-
 
 
 }

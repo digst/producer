@@ -158,5 +158,6 @@
     <orderEntry type="library" name="Maven: com.google.guava:guava-annotations:r03" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava-base:r03" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20180130" level="project" />
+    <orderEntry type="library" name="Maven: com.govcloud.common:avro-serde:1.0-SNAPSHOT" level="project" />
   </component>
 </module>

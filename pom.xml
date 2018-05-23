@@ -3,9 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-
-
     <groupId>com.govcloud.digst</groupId>
     <artifactId>webservice-producer</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -24,6 +21,12 @@
             <releases><enabled>true</enabled></releases>
             <snapshots><enabled>false</enabled></snapshots>
         </repository>
+        <repository>
+            <id>snapshots</id>
+            <url>http://localhost:38081/artifactory/libs-snapshot</url>
+            <snapshots><enabled>true</enabled></snapshots>
+            <releases><enabled>false</enabled></releases>
+        </repository>
     </repositories>
 
 
@@ -41,9 +44,14 @@
     <distributionManagement>
         <repository>
             <id>central</id>
-            <name>6ffa209b571a-releases</name>
-            <url>http://172.17.0.6:8081/artifactory/libs-release-local</url>
+            <name>20248642cdd9-releases</name>
+            <url>http://localhost:38081/artifactory/libs-local</url>
         </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>20248642cdd9-snapshots</name>
+            <url>http://localhost:38081/artifactory/libs-snapshot</url>
+        </snapshotRepository>
     </distributionManagement>
 
 
@@ -265,6 +273,13 @@
             <artifactId>json</artifactId>
             <version>20180130</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.govcloud.common</groupId>
+            <artifactId>avro-serde</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
 

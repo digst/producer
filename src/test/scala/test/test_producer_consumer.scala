@@ -89,23 +89,23 @@ class test_producer_consumer {
   def test_avro_consumer(): Unit =
   {
 
-    val topicAvro:String = "com.govcloud.digst.organisation"
+    val topicAvro:String = "/mapr/maprdemo.mapr.io/apps/digst/borgerdkstream:com.govcloud.digst.organisation"
     val props:Properties = readProperties(pathConfigConsumer)
     var topics:util.ArrayList[String] = new util.ArrayList()
     topics.add(topicAvro)
 
-    val consumerAvro:KafkaConsumer[String, Organisation] = new KafkaConsumer[String, Organisation](props)
+    val consumerAvro:KafkaConsumer[String, Array[Byte]] = new KafkaConsumer[String, Array[Byte]](props)
     consumerAvro.subscribe(topics)
 
     try
     {
       while (true)
       {
-        val records:ConsumerRecords[String,Organisation] = consumerAvro.poll(100)
+        val records:ConsumerRecords[String,Array[Byte]] = consumerAvro.poll(100)
 
         records.forEach(x => {
 
-          val mapping:Organisation = x.value()
+          val mapping:Array[Byte] = x.value()
 
           println(x.value())
 
