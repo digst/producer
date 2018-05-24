@@ -47,10 +47,15 @@
             <name>20248642cdd9-releases</name>
             <url>http://localhost:38081/artifactory/libs-local</url>
         </repository>
+        <!--<snapshotRepository>-->
+            <!--<id>snapshots</id>-->
+            <!--<name>20248642cdd9-snapshots</name>-->
+            <!--<url>http://localhost:38081/artifactory/libs-snapshot</url>-->
+        <!--</snapshotRepository>-->
         <snapshotRepository>
             <id>snapshots</id>
-            <name>20248642cdd9-snapshots</name>
-            <url>http://localhost:38081/artifactory/libs-snapshot</url>
+            <name>948a1c3c6d23-snapshots</name>
+            <url>http://10.33.69.21:8081/artifactory/libs-snapshot</url>
         </snapshotRepository>
     </distributionManagement>
 

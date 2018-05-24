@@ -1,1 +1,1 @@
- mvn clean compile assembly:single -D skipTests=true
+ mvn clean deploy assembly:single -D skipTests=true
